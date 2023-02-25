@@ -1,0 +1,21 @@
+{
+  "bosses": {
+    "cursed_realm_remastered:maudit": {
+      "minions": {
+        "sons_of_sins:walking_bed": {
+          "spawnChance": 0.5
+        }
+      },
+      "abilities": {
+
+      },
+      "maxMinions": 5,
+      "amountToSpawn": 3,
+      "cooldownToSpawn": 60000,
+      "cooldownCheckTarget": 15000
+    }
+  },
+  "general": {
+
+  }
+}
