@@ -13,7 +13,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +30,7 @@ public class RpgBosses
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String modId = "rpgbosses";
     public static BossManager bossManager = new BossManager();
+    public static boolean ServerWorldLoaded = false;
     public RpgBosses() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -73,6 +76,20 @@ public class RpgBosses
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @SubscribeEvent
+    public void onServerStarted(FMLServerStartedEvent event) {
+        // do something when the server starts
+        LOGGER.info("HELLO from server started");
+        ServerWorldLoaded = true;
+    }
+
+    @SubscribeEvent
+    public void onServerStopped(FMLServerStoppedEvent event) {
+        // do something when the server starts
+        LOGGER.info("HELLO from server stopped");
+        ServerWorldLoaded = false;
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD

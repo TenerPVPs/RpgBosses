@@ -1,5 +1,6 @@
 package com.tener.rpgbosses.managers;
 
+import com.tener.rpgbosses.RpgBosses;
 import com.tener.rpgbosses.objects.BossObject;
 
 import java.util.HashMap;
@@ -25,8 +26,14 @@ public class BossManager {
         }
     }
     public void Check() {
-        for (Map.Entry<String,BossObject> pairs : bossObjectHashMap.entrySet()) {
-            pairs.getValue().SpawnMinions();
+        if (RpgBosses.ServerWorldLoaded) {
+            for (Map.Entry<String,BossObject> pairs : bossObjectHashMap.entrySet()) {
+                BossObject bossObject = pairs.getValue();
+
+                bossObject.CheckIsTargeting();
+                bossObject.SpawnMinions();
+                bossObject.MinionsSetTarget();
+            }
         }
     }
 }

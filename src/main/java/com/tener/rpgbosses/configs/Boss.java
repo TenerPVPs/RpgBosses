@@ -1,12 +1,16 @@
 package com.tener.rpgbosses.configs;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Boss {
     private int maxMinions;
     private int amountToSpawn;
     private double cooldownToSpawn;
     private double cooldownCheckTarget;
+    private String infernalmobs_abilites;
+    private Integer champions_rank;
+    private List<String> champions_abilites;
     private HashMap<String, Minion> minions;
     private HashMap<String, Abilitie> abilities;
 
@@ -56,5 +60,29 @@ public class Boss {
 
     public void setAbilities(HashMap<String, Abilitie> abilities) {
         this.abilities = abilities;
+    }
+
+    public String getInfernalmobs_abilites() {
+        return infernalmobs_abilites;
+    }
+
+    public void setInfernalmobs_abilites(String infernalmobs_abilites) {
+        this.infernalmobs_abilites = infernalmobs_abilites;
+    }
+
+    public Integer getChampions_rank() {
+        return champions_rank;
+    }
+
+    public void setChampions_rank(Integer champions_rank) {
+        this.champions_rank = champions_rank;
+    }
+
+    public List<String> getChampions_abilites() {
+        return champions_abilites;
+    }
+
+    public void setChampions_abilites(List<String> champions_abilites) {
+        this.champions_abilites = champions_abilites;
     }
 }

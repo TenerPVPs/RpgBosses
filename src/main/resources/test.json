@@ -9,6 +9,24 @@
       "abilities": {
 
       },
+      "infernalmobs_abilites": "1UP Alchimist Berserk Gravity Lifesteal Poisonous Regen Wither Sprint ",
+      "maxMinions": 5,
+      "amountToSpawn": 3,
+      "cooldownToSpawn": 60000,
+      "cooldownCheckTarget": 15000
+    },
+    "mowziesmobs:ferrous_wroughtnaut": {
+      "minions": {
+        "dannys_expansion:possessed_armor": {
+          "spawnChance": 0.5
+        }
+      },
+      "abilities": {
+
+      },
+      "infernalmobs_abilites": "1UP Alchimist Berserk Gravity Lifesteal Poisonous Regen Wither Sprint ",
+      "champions_rank": 4,
+      "champions_abilites": ["Adaptable", "Arctic", "Paralyzing", "Molten"],
       "maxMinions": 5,
       "amountToSpawn": 3,
       "cooldownToSpawn": 60000,
