@@ -1,0 +1,11 @@
+{
+  "guardian": {
+    "distanceFromSpawn": 250,
+    "instaRegen": true,
+    "cooldownRegen": 0.1,
+    "regenPerCooldown": 0.2
+  },
+  "soulrecovery": {
+    "soulHealAmount": 0.2
+  }
+}
