@@ -34,8 +34,10 @@ public class JSONConfig {
     public static void Load(){
         configs = gson.fromJson(reader,Configs.class);
 
-        for (Map.Entry<String, Boss> pair : configs.getBosses().entrySet()){
-            RpgBosses.LOGGER.info(pair.getKey());
+        if (configs != null && configs.getBosses() != null) {
+            for (Map.Entry<String, Boss> pair : configs.getBosses().entrySet()){
+                RpgBosses.LOGGER.info(pair.getKey());
+            }
         }
     }
 
