@@ -1,9 +1,12 @@
 package com.tener.rpgbosses.objects;
 
 import atomicstryker.infernalmobs.common.InfernalMobsCore;
-import com.bottomtextdanny.dannys_expansion.core.capabilities.player.DannyEntityCap;
 import com.tener.rpgbosses.RpgBosses;
+import com.tener.rpgbosses.abilities.Guardian;
+import com.tener.rpgbosses.abilities.SoulRecovery;
+import com.tener.rpgbosses.configs.Abilitie;
 import com.tener.rpgbosses.configs.Boss;
+import com.tener.rpgbosses.configs.JSONConfig;
 import com.tener.rpgbosses.configs.Minion;
 import com.tener.rpgbosses.interfaces.BossInterface;
 import net.minecraft.entity.Entity;
@@ -39,6 +42,7 @@ public class BossObject implements BossInterface {
     private HashMap<String,Entity> minionsSpawned = new HashMap<>();
     private HashMap<String, ResourceLocation> minionsResources = new HashMap<>();
     private HashMap<Entity, List<Entity>> targetsList = new HashMap<>();
+    private HashMap<String, Abilitie> abilitieHashMap = new HashMap<>();
     private long lastSpawned;
     private long lastCheckedTarget;
     private int minionsAmount = 0;
@@ -61,6 +65,7 @@ public class BossObject implements BossInterface {
         lastSpawned = System.currentTimeMillis() - (long) boss.getCooldownToSpawn();
         lastCheckedTarget = System.currentTimeMillis() - (long) boss.getCooldownCheckTarget();
 
+        this.RegistryAbilities();
         this.SetChampionsMobsModifier();
         this.SetUndefeatablesMobsTier();
         this.SetInfernalMobsModifier();
@@ -239,6 +244,24 @@ public class BossObject implements BossInterface {
     public void SetUndefeatablesMobsTier() {
         if (ModList.get().isLoaded("undefeatables")){
 
+        }
+    }
+
+    @Override
+    public void RegistryAbilities() {
+        for (Map.Entry<String, Abilitie> abilitie : boss.getAbilities().entrySet()){
+            if (abilitie.getKey().equals("guardian")) {
+                abilitieHashMap.put(abilitie.getKey(),new Guardian(abilitie.getValue(),bossEntity));
+            } else if (abilitie.getKey().equals("soulrecovery")) {
+                abilitieHashMap.put(abilitie.getKey(),new SoulRecovery(abilitie.getValue(),bossEntity));
+            }
+        }
+    }
+
+    @Override
+    public void UnregistryAbilities() {
+        for (Map.Entry<String, Abilitie> abilitie : abilitieHashMap.entrySet()){
+            abilitie.getValue().UnregistryAllEvents();
         }
     }
 

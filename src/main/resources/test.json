@@ -2,12 +2,17 @@
   "bosses": {
     "cursed_realm_remastered:maudit": {
       "minions": {
-        "sons_of_sins:walking_bed": {
+        "minecraft:pig": {
           "spawnChance": 0.5
         }
       },
       "abilities": {
-
+        "guardian": {
+          "useGeneralConfigs": true
+        },
+        "soulrecovery": {
+          "useGeneralConfigs": true
+        }
       },
       "infernalmobs_abilites": "1UP Alchimist Berserk Gravity Lifesteal Poisonous Regen Wither Sprint ",
       "maxMinions": 5,
@@ -17,12 +22,17 @@
     },
     "mowziesmobs:ferrous_wroughtnaut": {
       "minions": {
-        "dannys_expansion:possessed_armor": {
+        "minecraft:pig": {
           "spawnChance": 0.5
         }
       },
       "abilities": {
-
+        "guardian": {
+          "useGeneralConfigs": true
+        },
+        "soulrecovery": {
+          "useGeneralConfigs": true
+        }
       },
       "infernalmobs_abilites": "1UP Alchimist Berserk Gravity Lifesteal Poisonous Regen Wither Sprint ",
       "champions_rank": 4,
@@ -34,6 +44,16 @@
     }
   },
   "general": {
-
+    "abilities": {
+      "guardian": {
+        "distanceFromSpawn": 250,
+        "instaRegen": true,
+        "cooldownRegen": 0.1,
+        "regenPerCooldown": 0.2
+      },
+      "soulrecovery": {
+        "soulHealAmount": 0.2
+      }
+    }
   }
 }

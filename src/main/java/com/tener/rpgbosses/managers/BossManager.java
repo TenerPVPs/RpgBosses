@@ -22,6 +22,7 @@ public class BossManager {
     }
     public void RemoveBoss(String bossUUID){
         if (bossObjectHashMap.containsKey(bossUUID)) {
+            bossObjectHashMap.get(bossUUID).UnregistryAbilities();
             bossObjectHashMap.remove(bossUUID);
         }
     }

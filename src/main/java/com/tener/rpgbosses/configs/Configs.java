@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Configs {
     private HashMap<String,Boss> bosses;
 
-    private HashMap<String,Object> general;
+    private General general;
 
     public HashMap<String, Boss> getBosses() {
         return bosses;
@@ -15,11 +15,11 @@ public class Configs {
         this.bosses = bosses;
     }
 
-    public HashMap<String, Object> getGeneral() {
+    public General getGeneral() {
         return general;
     }
 
-    public void setGeneral(HashMap<String, Object> general) {
+    public void setGeneral(General general) {
         this.general = general;
     }
 }

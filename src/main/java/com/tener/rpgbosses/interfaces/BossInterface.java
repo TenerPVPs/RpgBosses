@@ -14,4 +14,6 @@ public interface BossInterface {
     public abstract void SetInfernalMobsModifier();
     public abstract void SetChampionsMobsModifier();
     public abstract void SetUndefeatablesMobsTier();
+    public abstract void RegistryAbilities();
+    public abstract void UnregistryAbilities();
 }
