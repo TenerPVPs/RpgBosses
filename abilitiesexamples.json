@@ -1,3 +1,5 @@
+//put "useGeneralConfigs": true to use configs inside the general {}"
+
 {
   "guardian": {
     "distanceFromSpawn": 250,
