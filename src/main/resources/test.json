@@ -18,6 +18,7 @@
       "maxMinions": 5,
       "amountToSpawn": 3,
       "cooldownToSpawn": 60000,
+      "undefeatableRank": 1,
       "cooldownCheckTarget": 15000
     },
     "mowziesmobs:ferrous_wroughtnaut": {
@@ -37,6 +38,7 @@
       "infernalmobs_abilites": "1UP Alchimist Berserk Gravity Lifesteal Poisonous Regen Wither Sprint ",
       "champions_rank": 4,
       "champions_abilites": ["Adaptable", "Arctic", "Paralyzing", "Molten"],
+      "undefeatableRank": 4,
       "maxMinions": 5,
       "amountToSpawn": 3,
       "cooldownToSpawn": 60000,
@@ -57,3 +59,4 @@
     }
   }
 }
+

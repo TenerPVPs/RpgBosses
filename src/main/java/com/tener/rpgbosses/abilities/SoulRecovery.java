@@ -22,7 +22,6 @@ public class SoulRecovery extends Abilitie implements SoulRecoveryInterface {
         this.ValidateConfigs();
         this.bossEntity = bossEntity;
         this.bossLivingEntity = (LivingEntity) this.bossEntity;
-        RpgBosses.LOGGER.info("registered");
         RegistryEvents();
     }
 
@@ -55,7 +54,6 @@ public class SoulRecovery extends Abilitie implements SoulRecoveryInterface {
 
     @Override
     public void UnregistryAllEvents(){
-        RpgBosses.LOGGER.info("all removed ez");
         MinecraftForge.EVENT_BUS.unregister(this);
     }
 }

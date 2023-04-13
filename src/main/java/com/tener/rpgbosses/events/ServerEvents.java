@@ -32,12 +32,11 @@ public class ServerEvents {
     public static void EntityJoinWorldEvent(EntityJoinWorldEvent event) {
         if (!event.getWorld().isClientSide && event.getEntity() instanceof LivingEntity) {
             Entity spawned = event.getEntity();
-            String entityRegistryName = spawned.getType().getRegistryName().toString();
 
+            String entityRegistryName = spawned.getType().getRegistryName() != null ? spawned.getType().getRegistryName().toString() : "";
             Configs configs = JSONConfig.configs;
 
-            if (configs.getBosses().containsKey(entityRegistryName)) {
-                RpgBosses.LOGGER.info("Boss spawned " + entityRegistryName);
+            if (configs != null && configs.getBosses() != null && configs.getBosses().containsKey(entityRegistryName)) {
                 RpgBosses.bossManager.InsertBoss(spawned.getStringUUID(),new BossObject(configs.getBosses().get(entityRegistryName),spawned, event.getWorld().getServer().overworld()));
             }
         }
@@ -53,12 +52,10 @@ public class ServerEvents {
             String UUID = leaved.getStringUUID();
 
             if(tags.contains(RpgBosses.modId + ":boss")) {
-                RpgBosses.LOGGER.info("Boss leaved " + entityRegistryName);
                 RpgBosses.bossManager.RemoveBoss(UUID);
             }else if(tags.contains(RpgBosses.modId + ":boss_minion")) {
                 for (String tag : tags) {
                     if (tag.contains("bossid")) {
-                        RpgBosses.LOGGER.info("Minion leaved " + entityRegistryName);
                         HashMap<String, BossObject> bossObjectHashMap = bossManager.getBossObjectHashMap();
                         String bossUUID = tag.substring(tag.lastIndexOf(":") + 1);
 

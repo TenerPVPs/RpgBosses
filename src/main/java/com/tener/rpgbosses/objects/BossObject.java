@@ -12,6 +12,7 @@ import com.tener.rpgbosses.interfaces.BossInterface;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
@@ -204,8 +205,6 @@ public class BossObject implements BossInterface {
                 if (savedMods.isEmpty() || !savedMods.equals(mods)) {
                     bossEntity.getPersistentData().putString(InfernalMobsCore.instance().getNBTTag(), mods);
                 }
-
-                RpgBosses.LOGGER.info(mods);
             }
         }
     }
@@ -243,7 +242,12 @@ public class BossObject implements BossInterface {
     @Override
     public void SetUndefeatablesMobsTier() {
         if (ModList.get().isLoaded("undefeatables")){
+            if (boss.getUndefeatableRank() > 0) {
+                CompoundNBT nbt = bossEntity.getPersistentData();
 
+                nbt.putBoolean("isUndefeatable", true);
+                nbt.putInt("tier", Math.min(boss.getUndefeatableRank(),4));
+            }
         }
     }
 
@@ -276,9 +280,6 @@ public class BossObject implements BossInterface {
     public void SpawnMinions() {
         if (CanSpawnMinions()) {
 
-            RpgBosses.LOGGER.info("Trying spawn minion");
-            RpgBosses.LOGGER.info(bossLivingEntity.getName().getString());
-
             lastSpawned = System.currentTimeMillis();
 
             StringTextComponent minionTagName = new StringTextComponent(bossLivingEntity.getName().getString() + " minion");
@@ -286,8 +287,6 @@ public class BossObject implements BossInterface {
 
             for (int i = 0; i < boss.getAmountToSpawn();i++){
                 String minionName = GetRandomMinion();
-
-                RpgBosses.LOGGER.info(minionName);
 
                 if (!minionsResources.containsKey(minionName)) {
                     minionsResources.put(minionName,new ResourceLocation(minionName));

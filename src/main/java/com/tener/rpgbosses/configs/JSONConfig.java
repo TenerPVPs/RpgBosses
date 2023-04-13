@@ -36,7 +36,7 @@ public class JSONConfig {
 
         if (configs != null && configs.getBosses() != null) {
             for (Map.Entry<String, Boss> pair : configs.getBosses().entrySet()){
-                RpgBosses.LOGGER.info(pair.getKey());
+
             }
         }
     }

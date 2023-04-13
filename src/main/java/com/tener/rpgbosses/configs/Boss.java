@@ -10,6 +10,7 @@ public class Boss {
     private double cooldownCheckTarget;
     private String infernalmobs_abilites;
     private Integer champions_rank;
+    private Integer undefeatableRank;
     private List<String> champions_abilites;
     private HashMap<String, Minion> minions;
     private HashMap<String, Abilitie> abilities;
@@ -84,5 +85,13 @@ public class Boss {
 
     public void setChampions_abilites(List<String> champions_abilites) {
         this.champions_abilites = champions_abilites;
+    }
+
+    public Integer getUndefeatableRank() {
+        return undefeatableRank;
+    }
+
+    public void setUndefeatableRank(Integer undefeatableRank) {
+        this.undefeatableRank = undefeatableRank;
     }
 }

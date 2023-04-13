@@ -26,7 +26,6 @@ public class Guardian extends Abilitie implements GuardianInterface {
         this.bossLivingEntity = (LivingEntity) this.bossEntity;
         this.spawnPosition = bossEntity.position();
         this.lastCooldown = System.currentTimeMillis() - configs.getCooldownRegen();
-        RpgBosses.LOGGER.info("registered");
         RegistryEvents();
     }
 
@@ -47,9 +46,7 @@ public class Guardian extends Abilitie implements GuardianInterface {
             Abilitie abilitie = general.getAbilities().getOrDefault("guardian", null);
 
             if (abilitie != null) {
-                RpgBosses.LOGGER.info("using general configs");
                 this.configs = abilitie;
-                RpgBosses.LOGGER.info(configs.getCooldownRegen());
             }
         }
     }
@@ -73,7 +70,6 @@ public class Guardian extends Abilitie implements GuardianInterface {
     }
     @Override
     public void UnregistryAllEvents(){
-        RpgBosses.LOGGER.info("all removed ez");
         MinecraftForge.EVENT_BUS.unregister(this);
     }
 }
